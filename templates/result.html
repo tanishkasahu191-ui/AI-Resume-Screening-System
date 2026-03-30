@@ -1,13 +1,116 @@
-<h2>Resume Match Score</h2>
+<!DOCTYPE html>
+<html>
+<head>
 
-<h1>{{score}} %</h1>
+<title>Resume Result</title>
 
-<h3>Skills Found:</h3>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#667eea,#764ba2);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+margin:0;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:12px;
+width:420px;
+text-align:center;
+box-shadow:0px 10px 25px rgba(0,0,0,0.2);
+}
+
+.score{
+font-size:40px;
+color:#667eea;
+margin:20px 0;
+}
+
+.progress{
+background:#ddd;
+border-radius:10px;
+overflow:hidden;
+}
+
+.progress-bar{
+background:#4CAF50;
+color:white;
+padding:10px;
+}
+
+ul{
+list-style:none;
+padding:0;
+}
+
+li{
+background:#f2f2f2;
+margin:6px;
+padding:8px;
+border-radius:5px;
+}
+
+.feedback{
+margin-top:15px;
+font-weight:500;
+}
+
+a{
+display:inline-block;
+margin-top:20px;
+text-decoration:none;
+color:white;
+background:#667eea;
+padding:10px 20px;
+border-radius:6px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>Resume Analysis Result</h2>
+
+<div class="progress">
+<div class="progress-bar" style="width:{{score}}%;">
+{{score}}% Match
+</div>
+</div>
+
+<h3>Skills Found</h3>
 
 <ul>
 {% for skill in skills %}
-<li>{{ skill }}</li>
+<li>{{skill}}</li>
 {% endfor %}
 </ul>
 
+<h3>Missing Keywords</h3>
+
+<ul>
+{% for word in missing %}
+<li>{{word}}</li>
+{% endfor %}
+</ul>
+
+<div class="feedback">
+{{feedback}}
+</div>
+
 <a href="/">Analyze Another Resume</a>
+
+</div>
+
+</body>
+</html>

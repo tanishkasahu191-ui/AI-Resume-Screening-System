@@ -1,6 +1,5 @@
-from resume_parser import extract_skills
 from flask import Flask, render_template, request
-from resume_parser import extract_text
+from resume_parser import extract_text, extract_skills, missing_skills
 from similarity import get_similarity
 
 app = Flask(__name__)
@@ -19,7 +18,22 @@ def index():
 
         skills = extract_skills(resume_text)
 
-        return render_template("result.html", score=score, skills=skills)
+        missing = missing_skills(resume_text, job_desc)
+
+        if score < 40:
+            feedback = "Weak match. Improve your resume."
+        elif score < 70:
+            feedback = "Moderate match. Some improvements needed."
+        else:
+            feedback = "Strong match for this job."
+
+        return render_template(
+            "result.html",
+            score=score,
+            skills=skills,
+            missing=missing,
+            feedback=feedback
+        )
 
     return render_template("index.html")
 

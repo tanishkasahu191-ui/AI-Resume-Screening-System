@@ -1,34 +1,47 @@
-import PyPDF2
 import docx
+import pdfplumber
 
 def extract_text(file):
 
     text = ""
 
     if file.filename.endswith(".pdf"):
-        reader = PyPDF2.PdfReader(file)
-
-        for page in reader.pages:
-            text += page.extract_text()
+        with pdfplumber.open(file) as pdf:
+            for page in pdf.pages:
+                text += page.extract_text()
 
     elif file.filename.endswith(".docx"):
         doc = docx.Document(file)
-
         for para in doc.paragraphs:
             text += para.text
 
     return text
+
+
 skills_list = [
 "python","java","c++","sql","machine learning",
-"flask","django","html","css","javascript"
+"flask","django","html","css","javascript",
+"react","node","data analysis","deep learning"
 ]
 
+
 def extract_skills(text):
+
     text = text.lower()
-    found = []
+    found_skills = []
 
     for skill in skills_list:
         if skill in text:
-            found.append(skill)
+            found_skills.append(skill)
 
-    return found
+    return found_skills
+
+
+def missing_skills(resume_text, job_desc):
+
+    resume_words = set(resume_text.lower().split())
+    job_words = set(job_desc.lower().split())
+
+    missing = job_words - resume_words
+
+    return list(missing)[:10]
