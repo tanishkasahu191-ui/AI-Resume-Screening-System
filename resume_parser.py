@@ -18,3 +18,17 @@ def extract_text(file):
             text += para.text
 
     return text
+skills_list = [
+"python","java","c++","sql","machine learning",
+"flask","django","html","css","javascript"
+]
+
+def extract_skills(text):
+    text = text.lower()
+    found = []
+
+    for skill in skills_list:
+        if skill in text:
+            found.append(skill)
+
+    return found

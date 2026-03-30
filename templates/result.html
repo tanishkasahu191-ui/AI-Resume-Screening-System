@@ -2,4 +2,12 @@
 
 <h1>{{score}} %</h1>
 
+<h3>Skills Found:</h3>
+
+<ul>
+{% for skill in skills %}
+<li>{{ skill }}</li>
+{% endfor %}
+</ul>
+
 <a href="/">Analyze Another Resume</a>

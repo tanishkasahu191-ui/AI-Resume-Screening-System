@@ -1,3 +1,4 @@
+from resume_parser import extract_skills
 from flask import Flask, render_template, request
 from resume_parser import extract_text
 from similarity import get_similarity
@@ -16,7 +17,9 @@ def index():
 
         score = get_similarity(resume_text, job_desc)
 
-        return render_template("result.html", score=score)
+        skills = extract_skills(resume_text)
+
+        return render_template("result.html", score=score, skills=skills)
 
     return render_template("index.html")
 
