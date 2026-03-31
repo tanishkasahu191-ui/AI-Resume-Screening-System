@@ -1,5 +1,8 @@
 import docx
 import pdfplumber
+import spacy
+# Error occurs if this isn't exactly right
+nlp = spacy.load("en_core_web_sm")
 
 def extract_text(file):
 
