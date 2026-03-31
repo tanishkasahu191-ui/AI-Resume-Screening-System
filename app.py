@@ -1,7 +1,10 @@
 from flask import Flask, render_template, request
 from resume_parser import extract_text, extract_skills, missing_skills
 from similarity import get_similarity
-
+import os
+UPLOAD_FOLDER = 'uploads'
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
 app = Flask(__name__)
 
 @app.route("/", methods=["GET","POST"])
