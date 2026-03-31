@@ -60,20 +60,14 @@ The system also extracts skills from the resume and identifies missing skills ba
 ## Project Structure
 
 AI-Resume-Screening-System
-│
-├── app.py
-├── resume_parser.py
-├── similarity.py
-├── requirements.txt
-│
-├── templates/
-│   ├── index.html
-│   └── result.html
-│
-├── static/
-│   └── style.css
-│
-└── README.md
+app.py
+resume_parser.py
+similarity.py
+requirements.txt
+templates/index.html
+templates/result.html
+static/style.css
+  README.md
 
 
 
@@ -139,6 +133,7 @@ Resume Upload → Text Extraction → NLP Processing → Similarity Calculation 
 ## Author
 
 **Tanishka Sahu**
+**25BCE10056**
 B.Tech CSE Student
 
 ---
